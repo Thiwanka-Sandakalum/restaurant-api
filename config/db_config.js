@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config()
 
 const sequelize = new Sequelize({
-    dialect: 'sqlite', // You can change this to your desired database dialect (e.g., 'mysql', 'postgres')
-    storage: './database/dev.sqlite', // Adjust the storage path as needed
-    logging: true, // Set to true to see SQL queries in the console
+    dialect: 'sqlite',
+    storage: `./database/${process.env.NODE_ENV}.DB`,
+    logging: true,
 });
 
 module.exports = sequelize;

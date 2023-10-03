@@ -1,6 +1,6 @@
 // Server startup script
 const server = require("./app");
-require('dotenv').config()
+require('dotenv').config();
 
 
 if (process.env.NODE_ENV === "development"||process.env.NODE_EN==="test") {

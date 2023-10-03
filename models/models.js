@@ -1,10 +1,6 @@
 // Import Sequelize and configure it
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize({
-    dialect: 'sqlite', // You can change this to your desired database dialect (e.g., 'mysql', 'postgres')
-    storage: './database/dev.sqlite', // Adjust the storage path as needed
-    logging: true, // Set to true to see SQL queries in the console
-});
+const sequelize=require('../config/db_config');
 
 // Define Menu model
 const Menu = sequelize.define('Menu', {
@@ -56,13 +52,13 @@ Order.hasMany(OrderItem, { foreignKey: 'OrderID' });
 OrderItem.belongsTo(Order, { foreignKey: 'OrderID' });
 
 // Synchronize the models with the database
-sequelize.sync()
-    .then(() => {
-        console.log('Database and tables created!');
-    })
-    .catch((err) => {
-        console.error('Error synchronizing database:', err);
-    });
+// sequelize.sync()
+//     .then(() => {
+//         console.log('Database and tables created!');
+//     })
+//     .catch((err) => {
+//         console.error('Error synchronizing database:', err);
+//     });
 
 module.exports = {
     Menu,
