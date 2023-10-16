@@ -4,10 +4,11 @@ require('dotenv').config();
 
 const sequelize = new Sequelize({
   dialect: 'mssql',
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: process.env.AZURE_SQL_SERVER,
+  database: process.env.AZURE_SQL_DATABASE,
+  username: process.env.AZURE_SQL_USERNAME,
+  password: process.env.AZURE_SQL_PASSWORD,
+  port: process.env.AZURE_SQL_PORT,
   dialectOptions: {
     options: {
       encrypt: true,
@@ -15,6 +16,7 @@ const sequelize = new Sequelize({
     },
   },
 });
+
 
 sequelize.sync()
   .then(() => {
