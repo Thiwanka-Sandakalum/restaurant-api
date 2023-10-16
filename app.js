@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
 })
 
 // routers 
-// app.use('/api/order', order_router);
-// app.use('/api/menu', menu_router);
+app.use('/api/order', order_router);
+app.use('/api/menu', menu_router);
 
 
 module.exports = app;

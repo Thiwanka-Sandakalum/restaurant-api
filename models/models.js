@@ -52,13 +52,13 @@ Order.hasMany(OrderItem, { foreignKey: 'OrderID' });
 OrderItem.belongsTo(Order, { foreignKey: 'OrderID' });
 
 // Synchronize the models with the database
-// sequelize.sync()
-//     .then(() => {
-//         console.log('Database and tables created!');
-//     })
-//     .catch((err) => {
-//         console.error('Error synchronizing database:', err);
-//     });
+sequelize.sync()
+    .then(() => {
+        console.log('Database and tables created!');
+    })
+    .catch((err) => {
+        console.error('Error synchronizing database:', err);
+    });
 
 module.exports = {
     Menu,
