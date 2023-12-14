@@ -1,6 +1,5 @@
-// Import Sequelize and configure it
-const Sequelize = require('sequelize');
-const sequelize=require('../config/db_config');
+const { Sequelize } = require('sequelize');
+const { sequelize } = require('../config/db_config');
 
 // Define Menu model
 const Menu = sequelize.define('Menu', {
@@ -44,21 +43,11 @@ const OrderItem = sequelize.define('OrderItem', {
     },
 });
 
-// Define associations
-// Define associations with cascading deletes
+// impliment relations
 Menu.hasMany(OrderItem, { foreignKey: 'ItemID', onDelete: 'CASCADE' });
 OrderItem.belongsTo(Menu, { foreignKey: 'ItemID', onDelete: 'CASCADE' });
 Order.hasMany(OrderItem, { foreignKey: 'OrderID' });
 OrderItem.belongsTo(Order, { foreignKey: 'OrderID' });
-
-// Synchronize the models with the database
-sequelize.sync()
-    .then(() => {
-        console.log('Database and tables created!');
-    })
-    .catch((err) => {
-        console.error('Error synchronizing database:', err);
-    });
 
 module.exports = {
     Menu,

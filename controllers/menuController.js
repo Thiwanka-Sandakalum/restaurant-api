@@ -1,12 +1,9 @@
-// Menu-related logic
 const { getMenus, createMenu, updateMenu, deleteMenu } = require('../services/menuService');
 const { validationResult } = require('express-validator');
-const { deleteOrder } = require('../services/orderService');
 const logger = require('../logger/index');
-const { error } = require('winston');
 
 
-// Helper function for handling unique constraint violations
+// handling unique constraint violations
 function handleUniqueConstraintViolation(res, error) {
     logger.error('Unique constraint violation:', error.message);
     res.status(500).json({ error: error.message });

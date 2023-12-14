@@ -20,7 +20,6 @@ function updateMenu(id, Price) {
 }
 
 async function deleteMenu(id) {
-    // Delete the Menu record
     return Menu.destroy({
         where: { id }
     });

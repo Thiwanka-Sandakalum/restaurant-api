@@ -2,7 +2,6 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Seed data for Menus
     const menusData = [
       {
         name: 'Menu Item 1',
@@ -14,10 +13,8 @@ module.exports = {
         description: 'Description for Menu Item 2',
         price: 12.99,
       },
-      // Add more menu items as needed
     ];
 
-    // Seed data for Orders
     const ordersData = [
       {
         address: '123 Main St',
@@ -31,10 +28,8 @@ module.exports = {
         pay_method: 'online',
         name: 'Jane Smith',
       },
-      // Add more orders as needed
     ];
 
-    // Seed data for Order_items
     const orderItemsData = [
       {
         menu_id: 1,
@@ -46,18 +41,14 @@ module.exports = {
         order_id: 1,
         quantity: 1,
       },
-      // Add more order items as needed
     ];
 
-    // Insert seed data into respective tables
     await queryInterface.bulkInsert('Menus', menusData);
     await queryInterface.bulkInsert('Orders', ordersData);
     await queryInterface.bulkInsert('Order_items', orderItemsData);
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Delete all data from the tables
-    // Before undoing seed data
     await queryInterface.bulkDelete('Menus', null, {});
     await queryInterface.bulkDelete('Orders', null, {});
     await queryInterface.bulkDelete('Order_items', null, {});

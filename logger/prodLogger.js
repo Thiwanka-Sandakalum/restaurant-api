@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, errors,json } = format;
+const { combine, timestamp, errors, json } = format;
 
 function buildProdLogger() {
     return createLogger({
@@ -9,7 +9,7 @@ function buildProdLogger() {
             json()
         ),
         defaultMeta: { service: 'userService' },
-        transports: [new transports.Console()]
+        transports: [new transports.Console(), new transports.File({ filename: "production.log", level: "http" })]
     });
 }
 

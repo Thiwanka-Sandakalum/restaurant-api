@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.createTable('menus', { // Use singular table name
+      queryInterface.createTable('menus', {
         id: {
           allowNull: false,
           autoIncrement: true,
@@ -23,15 +23,13 @@ module.exports = {
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         },
         updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         }
       }),
-      queryInterface.createTable('Orders', { // Use singular table name
+      queryInterface.createTable('Orders', {
         id: {
           allowNull: false,
           primaryKey: true,
@@ -43,7 +41,7 @@ module.exports = {
           allowNull: false,
         },
         phone: {
-          type: Sequelize.STRING, // Change to STRING since it's a phone number
+          type: Sequelize.STRING,
           allowNull: false,
           unique: true
         },
@@ -58,15 +56,13 @@ module.exports = {
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         },
         updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         }
       }),
-      queryInterface.createTable('Order_items', { // Use singular table name
+      queryInterface.createTable('Order_items', {
         id: {
           allowNull: false,
           primaryKey: true,
@@ -78,8 +74,8 @@ module.exports = {
           type: Sequelize.INTEGER,
           references: {
             key: 'id',
-            model: 'menu', // Use singular table name
-            onDelete: 'CASCADE' // Automatically delete related order items when a menu is deleted
+            model: 'menu',
+            onDelete: 'CASCADE'
           }
         },
         order_id: {
@@ -87,8 +83,8 @@ module.exports = {
           type: Sequelize.INTEGER,
           references: {
             key: 'id',
-            model: 'Order', // Use singular table name
-            onDelete: 'CASCADE' // Automatically delete related order items when an order is deleted
+            model: 'Order',
+            onDelete: 'CASCADE'
           }
         },
         quantity: {
@@ -98,12 +94,10 @@ module.exports = {
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         },
         updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,
-          // Remove defaultValue if you handle timestamps in your application
         }
       }),
     ]);
@@ -111,9 +105,9 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.dropTable('Order_items'), // Use singular table name
-      queryInterface.dropTable('Orders'), // Use singular table name
-      queryInterface.dropTable('menus'), // Use singular table name
+      queryInterface.dropTable('Order_items'),
+      queryInterface.dropTable('Orders'),
+      queryInterface.dropTable('menus'),
     ]);
   }
 };

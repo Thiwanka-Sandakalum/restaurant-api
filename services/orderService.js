@@ -1,4 +1,3 @@
-// orderService.js
 const { Order, OrderItem, Menu } = require('../models/models');
 
 async function order(Address, Phone, PaymentMethod, CustomerName) {
